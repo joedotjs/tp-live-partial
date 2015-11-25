@@ -46,19 +46,16 @@ function initialize_gmaps() {
     // initialize a new Google Map with the options
     var map = new google.maps.Map(map_canvas_obj, mapOptions);
 
-    // draw some locations on the map
-    function drawLocation(location, opts) {
-        if (typeof opts !== 'object') {
-            opts = {};
-        }
-        opts.position = new google.maps.LatLng(location[0], location[1]);
-        opts.map = map;
-        var marker = new google.maps.Marker(opts);
-    }
+    return map;
 
 }
 
-$(document).ready(function () {
-    initialize_gmaps();
-});
-
+// draw some locations on the map
+function drawLocation(map, location, opts) {
+    if (typeof opts !== 'object') {
+        opts = {};
+    }
+    opts.position = new google.maps.LatLng(location[0], location[1]);
+    opts.map = map;
+    var marker = new google.maps.Marker(opts);
+}
